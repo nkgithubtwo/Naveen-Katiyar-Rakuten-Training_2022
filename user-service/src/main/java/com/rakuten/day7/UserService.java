@@ -38,9 +38,19 @@ public class UserService {
 		if (age <= 0) {
 			throw new IllegalArgumentException("age cannot be negative=" + age);
 		}
-		List<User> filteredUsers = getAllUsers().stream().filter((user) -> user.getAge() == age).collect(Collectors.toList());
+		List<User> filteredUsers = getAllUsers().stream().filter((user) -> user.getAge() == age)
+				.collect(Collectors.toList());
 		return filteredUsers;
 
+	}
+
+	public void deleteUserById(int id) {
+		repository.deleteById(id);
+
+	}
+
+	public void deleteAllRecords() {
+		repository.deleteAll();
 	}
 
 }
